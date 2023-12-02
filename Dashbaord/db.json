@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "admin",
+      "email": "admin@mail.com"
+    },
+    {
+      "name": "test",
+      "email": "test@mail.com",
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "name": "Add your name in the body",
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
