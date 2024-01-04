@@ -1,8 +1,7 @@
-import { SIGNUP_FAILURE, SIGNUP_REQUEST, SIGNUP_SUCCESS } from './Actionype'
+import { LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCESS, SIGNUP_FAILURE, SIGNUP_REQUEST, SIGNUP_SUCCESS } from './Actionype'
 
 
-
-console.log("action done");
+// Ragister Actions
 const signinRequest = () => ({
   type: SIGNUP_REQUEST,
 })
@@ -18,4 +17,22 @@ const signinFail = (err) => ({
   payload: err,
 })
 
-export { signinRequest, signinSuccess, signinFail }
+
+
+const loginRequest = () => ({
+  type: LOGIN_REQUEST,
+})
+
+const loginSuccess = (Userdata) => ({
+  type: LOGIN_SUCCESS,
+  payload: Userdata,
+  
+})
+
+const loginFail = (err) => ({
+  type: LOGIN_FAILED,
+  payload: err,
+})
+
+
+export { signinRequest, signinSuccess, signinFail,loginFail ,loginSuccess,loginRequest}

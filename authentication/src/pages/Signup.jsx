@@ -1,31 +1,36 @@
-import React, { useState } from "react";
-import CustomHook, {handleChange,inp} from '../custom/CustomHook.js'
+import React from "react";
+import CustomHook from '../custom/CustomHook.js'
 import { useDispatch } from "react-redux";
 import { signinFail, signinRequest, signinSuccess } from "../redux/action/Action";
-import saveUser from "../redux/services/fatchData.js";
+import {saveUser} from '../custom/services/fatchData.js'
+import '../App.css'
+import { useNavigate } from "react-router-dom";
+
 
 const Signin = () => {
-  const {handleChange,inp}=CustomHook('role:2',{})
+  const {handleChange,inp}=CustomHook({'role':2},{})
   const disPatch = useDispatch()
+  const navigate = useNavigate()
  
 const handleSubmit=async(e)=>{
     e.preventDefault()
     disPatch(signinRequest())
 
     try {
-      await saveUser(inp)(disPatch)
+      await signinSuccess(saveUser(inp)(disPatch))
+      navigate('/login')
     } catch (error) {
       disPatch(signinFail(error))
     }
 }
 
-    
-
   return (
     <>
-      <div className="form-wrapper w-full min-h-full flex items-center justify-center">
-        <form onSubmit={handleSubmit}>
-          <h1 className="mb-6">Sign In</h1>
+      <div className="form-wrapper">
+      <div className="dic  flex justify-center items-center">
+
+        <form onSubmit={handleSubmit} className="w-25 ">
+          <h1 className="mb-6 text-center">Sign In</h1>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
               Username
@@ -44,7 +49,7 @@ const handleSubmit=async(e)=>{
             </label>
             <input
               type="email"
-              className="form-control"
+              className="form-control "
               placeholder="Enter Email"
               onChange={handleChange}
               name="email"
@@ -62,11 +67,15 @@ const handleSubmit=async(e)=>{
               name="password"
             />
           </div>
-          <button type="submit" className="btn btn-danger" >
+          <div className="div text-center" >
+
+          <button type="submit" className="btn btn-primary text-center w-25" >
     sign in
           </button>
+          </div>
           
         </form>
+      </div>
       </div>
     </>
   );
